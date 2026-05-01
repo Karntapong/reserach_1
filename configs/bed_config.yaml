@@ -1,0 +1,33 @@
+# OpenEvolve config for BED-guided market conduct prompt evolution
+# Reference: https://github.com/algorithmicsuperintelligence/openevolve
+
+llm:
+  model: "gpt-4o-mini"          # swap for your preferred model
+  temperature: 0.7
+  max_tokens: 2048
+
+evolution:
+  max_iterations: 200
+  num_islands: 1                 # keep single island for cleaner BED comparison
+
+database:
+  population_size: 100
+  archive_size: 20
+  feature_dimensions:
+    - "fitness"
+    - "prompt_length"
+  feature_bins: 10
+  exploration_ratio: 0.2
+  exploitation_ratio: 0.1
+
+evaluator:
+  timeout: 60
+  cascade_evaluation: false
+
+prompt:
+  num_top_programs: 3
+  template_dir: null             # use OpenEvolve defaults
+
+output:
+  log_dir: "outputs/bed_run"
+  checkpoint_interval: 50
